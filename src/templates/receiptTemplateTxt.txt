@@ -1,0 +1,16 @@
+🧾 RECIBO DE COMPRA
+
+Loja: {{store_id}}
+Terminal: {{pos_terminal_id}}
+Transação: {{transaction_id}}
+Data: {{date}}
+
+👤 Cliente: {{customer_name}}
+📞 Telefone: {{customer_phone}}
+📧 Email: {{customer_email}}
+
+🛍️ Itens Comprados:
+{{items}}
+
+💳 Pagamento: {{payment_method}}
+💰 Total: R$ {{total}}

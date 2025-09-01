@@ -1,8 +1,8 @@
-require('dotenv').config();
+// src/server.js
 const app = require('./app');
 
-const PORT = process.env.PORT || 5000;
+ const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`POS Data Ingestion Service running on port ${PORT}`);
 });

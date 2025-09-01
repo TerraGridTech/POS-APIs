@@ -1,13 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../../database/sequelizeClient');
 
-class POSDevice extends Model {
-
- static async totalPosDevice(){
-  return this.count();
- }
-
-}
+class POSDevice extends Model {}
 
 POSDevice.init({
   id: {
@@ -17,11 +11,7 @@ POSDevice.init({
   },
   owner_id: {
     type: DataTypes.UUID,
-    allowNull: true
-  },
-  sys_admin_id: {
-    type: DataTypes.UUID,
-    allowNull: true,
+    allowNull: false
   },
   device_name: {
     type: DataTypes.STRING,
@@ -35,10 +25,10 @@ POSDevice.init({
     type: DataTypes.BOOLEAN,
     defaultValue: true
   },
- // createdAt: {
- //   type: DataTypes.DATE,
- //   field: 'created_at'
- // },
+  createdAt: {
+    type: DataTypes.DATE,
+    field: 'created_at'
+  },
   updatedAt: {
     type: DataTypes.DATE,
     field: 'updated_at'
@@ -46,17 +36,13 @@ POSDevice.init({
   deletedAt: {
     type: DataTypes.DATE,
     field: 'deleted_at'
-  },
-  device_limit: {
-    type: DataTypes.INTEGER,
-    allowNull: true
   }
 }, {
   sequelize,
   modelName: 'POSDevice',
   tableName: 'pos_devices',
-  timestamps: false,
-  paranoid: false
+  timestamps: true,
+  paranoid: true
 });
 
 module.exports = POSDevice; 
