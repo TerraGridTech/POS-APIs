@@ -27,19 +27,19 @@ async function processReceipt(receiptData) {
 
   // 1. Calculate total_amount if not provided by the POS
   // 2. Generate PDF and QR as buffers
-  const pdfBuffer = await generatePdfBuffer(receiptData);
-  const qrBuffer = await generateQrCodeBuffer(transaction_number); 
+//  const pdfBuffer = await generatePdfBuffer(receiptData);
+//  const qrBuffer = await generateQrCodeBuffer(transaction_number); 
    
 
   // 3. Upload to Blob Storage
-  const datePath = new Date(date).toISOString().split('T')[0]; // YYYY-MM-DD
-  const pdfPath = `receipts/${datePath}/${transaction_number}.pdf`;
-  const qrPath = `qrcodes/${datePath}/${transaction_number}.png`;
+//  const datePath = new Date(date).toISOString().split('T')[0]; // YYYY-MM-DD
+//  const pdfPath = `receipts/${datePath}/${transaction_number}.pdf`;
+//  const qrPath = `qrcodes/${datePath}/${transaction_number}.png`;
   
-  const [pdfUrl, qrUrl] = await Promise.all([
-    uploadBlob(pdfPath, pdfBuffer, 'application/pdf'),
-    uploadBlob(qrPath, qrBuffer, 'image/png')
-  ]);
+//  const [pdfUrl, qrUrl] = await Promise.all([
+//    uploadBlob(pdfPath, pdfBuffer, 'application/pdf'),
+//    uploadBlob(qrPath, qrBuffer, 'image/png')
+//  ]);
 
   // 4. Save to Cosmos DB (complete document) 
   /*await cosmosDb.saveReceipt({
@@ -76,8 +76,8 @@ async function processReceipt(receiptData) {
   return {
     success: true,
     transaction_number,
-    receipt_url: pdfUrl,
-    qr_code_url: qrUrl
+  //  receipt_url: pdfUrl,
+  //  qr_code_url: qrUrl
   };
  } else {
 
