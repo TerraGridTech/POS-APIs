@@ -8,8 +8,8 @@ const generateReceiptId = require("../utils/generateReceiptId");
 async function generatePdfBuffer(receiptData) {
 
   const receiptId = generateReceiptId(); // Gera um novo ID de recibo
+  //console.log("📦 Dados recebidos na requisição:", data);
 
-  //console.log(receiptId);
   const htmlContent = renderHTML({ ...receiptData, receiptId });
 
   const browser = await puppeteer.launch();
