@@ -6,22 +6,32 @@ const puppeteer = require("puppeteer");
 const generateReceiptId = require("../utils/generateReceiptId");
 
 async function generatePdfBuffer(receiptData) {
-
-  const receiptId = generateReceiptId(); // Gera um novo ID de recibo
-  //console.log("📦 Dados recebidos na requisição:", data);
+  const receiptId = generateReceiptId();
 
   const htmlContent = renderHTML({ ...receiptData, receiptId });
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setContent(htmlContent, { waitUntil: "networkidle0" });
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true
+    });
 
-  const pdfBuffer = await page.pdf({ format: "A4" });
+    const page = await browser.newPage();
+    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
-  await browser.close();
+    const pdfBuffer = await page.pdf({ format: "A4" });
 
-  return { buffer: pdfBuffer, receiptId };
+    return { buffer: pdfBuffer, receiptId };
+
+  } catch (err) {
+    console.error("Erro ao gerar PDF com Puppeteer:", err.message);
+    throw new Error("Falha ao gerar PDF em produção");
+  } finally {
+    if (browser) await browser.close();
+  }
 }
+
 
 function renderHTML(receiptData) {
 
