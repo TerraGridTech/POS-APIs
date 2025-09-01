@@ -18,11 +18,12 @@ async function processReceipt(receiptData) {
     pos_device_id,
   } = receiptData;
 
- const checkTransaction =  await cosmosDb.checkIfTransactionExists({
-   id: transaction_number,
-   store_id, 
-  });
+// const checkTransaction =  await cosmosDb.checkIfTransactionExists({
+  // id: transaction_number,
+//   store_id, 
+//  });
 
+const checkTransaction = 0;
   if(checkTransaction == 0) {
 
   // 1. Calculate total_amount if not provided by the POS
