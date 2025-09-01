@@ -1,7 +1,7 @@
 // utils/sendAnalyticsLog.js
-const axios = require('axios');
+//const axios = require('axios');
 
-async function sendAnalyticsLog(eventType, properties) {
+/* async function sendAnalyticsLog(eventType, properties) {
   try {
     await axios.post('http://localhost:3000/api/transaction/log', {
       eventType,
@@ -14,6 +14,6 @@ async function sendAnalyticsLog(eventType, properties) {
   }
 }
 
-module.exports = sendAnalyticsLog;
+module.exports = sendAnalyticsLog; */
 
  

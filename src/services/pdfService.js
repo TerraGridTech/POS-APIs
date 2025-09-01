@@ -8,7 +8,6 @@ const generateReceiptId = require("../utils/generateReceiptId");
 async function generatePdfBuffer(receiptData) {
 
   const receiptId = generateReceiptId(); // Gera um novo ID de recibo
-  //console.log("📦 Dados recebidos na requisição:", data);
 
   const htmlContent = renderHTML({ ...receiptData, receiptId });
 
@@ -26,7 +25,6 @@ async function generatePdfBuffer(receiptData) {
 function renderHTML(receiptData) {
   const templatePath = path.join(__dirname, "..", "templates", "generalReceiptTemplate.html");
   let html = fs.readFileSync(templatePath, "utf-8");
-    console.log('meus dados', receiptData);
   html = html
     .replace("{{receiptId}}", receiptData.receiptId)
     .replace("{{date}}", receiptData.date)

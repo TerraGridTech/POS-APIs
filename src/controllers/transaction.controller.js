@@ -36,15 +36,15 @@ async function createTransaction(req, res) {
         return res.redirect(`/api/transactions/${data.transaction_id}`);
     }
 
-     if (req.pos || req.user) {  //or req.user
-       await sendAnalyticsLog("RECEIPT_GENERATED", {
-       posId: req.pos?.id || req.user?.id,
-       transactionId: result.transaction_id,
-       receipt_url: result.receipt_url,
-       qr_code_url: result.qr_code_url,
-       durationMs: duration,
-     });
-    } 
+   //  if (req.pos || req.user) {  //or req.user
+   //    await sendAnalyticsLog("RECEIPT_GENERATED", {
+   //    posId: req.pos?.id || req.user?.id,
+   //    transactionId: result.transaction_id,
+   //    receipt_url: result.receipt_url,
+   //    qr_code_url: result.qr_code_url,
+   //    durationMs: duration,
+   //  });
+   // } 
     
     res.status(201).json({
       message: 'Transação registrada com sucesso.',

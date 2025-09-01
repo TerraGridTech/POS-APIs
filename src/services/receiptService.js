@@ -23,8 +23,6 @@ async function processReceipt(receiptData) {
    store_id, 
   });
 
-  console.log('check', checkTransaction);
-
   if(checkTransaction == 0) {
 
   // 1. Calculate total_amount if not provided by the POS

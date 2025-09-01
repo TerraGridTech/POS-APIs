@@ -13,7 +13,6 @@ async function saveReceipt(receiptData) {
     const { resource } = await container.items.create(receiptData);
     return resource;
   } catch (error) {
-    console.error('Erro ao salvar no Cosmos DB:', error.message);
     throw error;
   }
 }
