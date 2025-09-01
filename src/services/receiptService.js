@@ -28,8 +28,8 @@ const checkTransaction = 0;
 
   // 1. Calculate total_amount if not provided by the POS
   // 2. Generate PDF and QR as buffers
-//  const pdfBuffer = await generatePdfBuffer(receiptData);
- const qrBuffer = await generateQrCodeBuffer(transaction_number); 
+ const pdfBuffer = await generatePdfBuffer(receiptData);
+// const qrBuffer = await generateQrCodeBuffer(transaction_number); 
    
 
   // 3. Upload to Blob Storage
