@@ -10,6 +10,7 @@ const { sequelize } = require('./models/auth');
 const app = express();
 // Security headers
 app.use(helmet());
+app.use(cors());
 // Logging
 app.use(morgan('combined'));
 if (process.env.NODE_ENV === 'development') {
