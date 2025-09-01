@@ -26,15 +26,6 @@ async function processReceipt(receiptData) {
   if(checkTransaction == 0) {
 
   // 1. Calculate total_amount if not provided by the POS
-
-  //total_amount = items.reduce((total, item) => {
-   // const base = item.price * item.quantity;
-  //  const discount = item.discount || 0;
-  //  const tax = item.tax || 0;
-   // return total + base - discount + tax;
-  //}, 0);
-
-
   // 2. Generate PDF and QR as buffers
   const pdfBuffer = await generatePdfBuffer(receiptData);
   const qrBuffer = await generateQrCodeBuffer(transaction_number); 
@@ -51,7 +42,7 @@ async function processReceipt(receiptData) {
   ]);
 
   // 4. Save to Cosmos DB (complete document) 
-  await cosmosDb.saveReceipt({
+  /*await cosmosDb.saveReceipt({
     id: transaction_number,
     store_id,
     date,
@@ -61,10 +52,10 @@ async function processReceipt(receiptData) {
     payment_method,
     receipt_url: pdfUrl,
     qr_code_url: qrUrl
-  });
+  }); */
 
   // 5. Save to MySQL (normalized entities)
-  const customerId = await mysqlDb.upsertCustomer(customer); // Returns existing id or inserts new one
+/*  const customerId = await mysqlDb.upsertCustomer(customer); // Returns existing id or inserts new one
 
  const transactionId = await mysqlDb.insertTransaction({
     transaction_number,
@@ -76,11 +67,11 @@ async function processReceipt(receiptData) {
     receipt_url: pdfUrl,
     qr_code_url: qrUrl,
     device_id: pos_device_id
-  });
+  }); */
 
-  for (const item of items) {
-    await mysqlDb.insertTransactionItem(transactionId, item);
-  }
+//  for (const item of items) {
+//    await mysqlDb.insertTransactionItem(transactionId, item);
+//  }
 
   return {
     success: true,
