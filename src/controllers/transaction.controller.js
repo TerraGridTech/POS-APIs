@@ -62,8 +62,10 @@ async function createTransaction(req, res) {
     }
 
     // Other unexpected errors
-    console.error('Erro na criação da transação:', error);
-    res.status(500).json({ error: 'Erro ao processar a transação.' });
+    console.error('Erro na criação da transação:', error.message);
+    res.status(500).json({ 
+      error: error.message || 'Erro ao processar a transação.'
+     });
   }
 }
 
