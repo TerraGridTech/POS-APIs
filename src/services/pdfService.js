@@ -7,7 +7,6 @@ const generateReceiptId = require("../utils/generateReceiptId");
 
 async function generatePdfBuffer(receiptData) {
   try {
-
      let options = {
             printBackground: true,
             format: 'a4',
@@ -26,7 +25,7 @@ async function generatePdfBuffer(receiptData) {
 
     //const browser = await puppeteer.launch();
     const browser = await puppeteer.launch({ headless: true, args: [
-            '--no-sandbox'
+            '--no-sandbox',
             //'--disable-setuid-sandbox'
         ],
       // executablePath: path.resolve(__dirname, './chromium/chrome'),
