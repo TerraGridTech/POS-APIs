@@ -32,8 +32,10 @@ jobs:
       - name: Install Chromium for Puppeteer
         run: node node_modules/puppeteer/install.mjs
 
-      - name: List Chromium folder
-        run: ls -R .cache/puppeteer
+      - name: Copy Chromium to project folder
+        run: |
+          mkdir -p src/chromium
+          find . -type f -name chrome | grep -i 'chrome-linux' | head -n 1 | xargs -I{} cp -r $(dirname {})/* src/chromium/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
