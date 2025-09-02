@@ -30,14 +30,7 @@ jobs:
           npm run test --if-present
 
       - name: Install Chromium via Puppeteer
-        run: node node_modules/puppeteer/install.mjs
-
-      - name: Copy Chromium to src/services/chromium/
-        run: |
-           mkdir -p src/services/chromium
-           CHROME_PATH=$(find . -type f -name chrome | grep -i 'chrome-linux' | head -n 1)
-           CHROME_DIR=$(dirname "$CHROME_PATH")
-           cp -r "$CHROME_DIR"/* src/services/chromium/
+        run: npx puppeteer browsers install Firefox
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
