@@ -26,10 +26,10 @@ async function generatePdfBuffer(receiptData) {
 
     //const browser = await puppeteer.launch();
     const browser = await puppeteer.launch({ headless: true, args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox'
+            '--no-sandbox'
+            //'--disable-setuid-sandbox'
         ],
-       executablePath: path.resolve(__dirname, './chromium/chrome'),
+      // executablePath: path.resolve(__dirname, './chromium/chrome'),
        });
 
     const page = await browser.newPage();

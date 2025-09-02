@@ -2,5 +2,5 @@
 const  path  = require( 'path' ); 
 
 módulo . exports = { 
-  cacheDirectory: path.join(__dirname, '.cache' , 'puppeteer' ) 
+  cacheDirectory: join(__dirname, '.cache' , 'puppeteer' ) 
 };
