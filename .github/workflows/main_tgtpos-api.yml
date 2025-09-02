@@ -29,8 +29,10 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
-      - name: Install Chromium via Puppeteer
-        run: npx puppeteer browsers install Firefox
+      - name: Allow puppeteer to install Chromium
+        run: |
+          mkdir -p ~/.cache/puppeteer
+          npx puppeteer browsers install chrome
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
