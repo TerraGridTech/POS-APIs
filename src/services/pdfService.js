@@ -29,7 +29,7 @@ async function generatePdfBuffer(receiptData) {
             '--no-sandbox',
             '--disable-setuid-sandbox'
         ],
-       executablePath: path.resolve(__dirname, './chromium/chrome')
+       executablePath: path.resolve(__dirname, '../chromium/chrome'),
        });
 
     const page = await browser.newPage();
