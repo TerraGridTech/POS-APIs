@@ -26,9 +26,12 @@ async function generatePdfBuffer(receiptData) {
     //const browser = await puppeteer.launch();
     const browser = await puppeteer.launch({ headless: true, args: [
             '--no-sandbox',
-            //'--disable-setuid-sandbox'
+            '--disable-setuid-sandbox'
         ],
-      // executablePath: path.resolve(__dirname, './chromium/chrome'),
+      
+      executablePath: path.resolve(__dirname,
+    '../.cache/puppeteer/chrome/win64-139.0.7258.154/chrome-win64/chrome.exe'
+  )
        });
 
     const page = await browser.newPage();
