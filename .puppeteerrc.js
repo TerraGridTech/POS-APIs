@@ -1,6 +1,5 @@
-// .puppeteerrc.js 
-const  path  = require( 'path' ); 
+const path = require('path');
 
-módulo . exports = { 
-  cacheDirectory: join(__dirname, '.cache' , 'puppeteer' ) 
+module.exports = {
+  cacheDirectory: path.join(__dirname, '.cache', 'puppeteer')
 };
