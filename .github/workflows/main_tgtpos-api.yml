@@ -35,7 +35,9 @@ jobs:
       - name: Copy Chromium to project folder
         run: |
           mkdir -p src/chromium
-          find . -type f -name chrome | grep -i 'chrome-linux' | head -n 1 | xargs -I{} cp -r $(dirname {})/* src/chromium/
+          CHROME_PATH=$(find . -type f -name chrome | grep -i 'chrome-linux' | head -n 1)
+          CHROME_DIR=$(dirname "$CHROME_PATH")
+          cp -r "$CHROME_DIR"/* src/chromium/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
