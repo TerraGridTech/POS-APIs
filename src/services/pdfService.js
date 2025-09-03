@@ -28,10 +28,7 @@ async function generatePdfBuffer(receiptData) {
             '--no-sandbox',
             '--disable-setuid-sandbox'
         ],
-      
-      executablePath: path.resolve(__dirname,
-    '../.cache/puppeteer/chrome/win64-139.0.7258.154/chrome-win64/chrome.exe'
-  )
+       executablePath: '/usr/bin/google-chrome'
        });
 
     const page = await browser.newPage();
